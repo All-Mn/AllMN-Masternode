@@ -1,0 +1,67 @@
+#!/bin/bash
+TMP_FOLDER=$(mktemp -d)
+CONFIG_FILE='allmn.conf'
+CONFIGFOLDER='/root/.allmn/'
+COIN_DAEMON='/usr/local/bin/allmnd'
+COIN_CLI='/usr/local/bin/allmn-cli'
+COIN_REPO='https://github.com/All-Mn/AllMnCore/releases/download/v1.0.1.1/AllMN-Daemon.Ubuntu.v1.0.1.1.tar.gz'
+COIN_NAME='allmn'
+COIN_PORT=20500
+RPC_PORT=30600
+
+
+NODEIP=$(curl -s4 icanhazip.com)
+
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+function stop_node() {
+  systemctl stop $COIN_NAME.service
+  allmn-cli stop
+}
+
+function compile_node() {
+  echo -e "Prepare to download $COIN_NAME"
+  cd $TMP_FOLDER
+  wget -q $COIN_REPO
+  compile_error
+  COIN_ZIP=$(echo $COIN_REPO | awk -F'/' '{print $NF}')
+  tar xvzf $COIN_ZIP >/dev/null 2>&1
+  compile_error
+  cp allmn* /usr/local/bin
+  compile_error
+  strip $COIN_DAEMON $COIN_CLI
+  cd - >/dev/null 2>&1
+  rm -rf $TMP_FOLDER >/dev/null 2>&1
+  systemctl start $COIN_NAME.service
+  clear
+}
+
+
+function update_config() {
+  sed -i 's/daemon=1/daemon=0/' $CONFIGFOLDER/$CONFIG_FILE
+  cat << EOF >> $CONFIGFOLDER/$CONFIG_FILE
+addnode=194.67.201.232
+addnode=185.238.138.71
+addnode=213.183.59.228
+addnode=194.67.201.232
+addnode=185.238.138.71
+addnode=193.124.191.135:20500
+addnode=213.183.59.228
+addnode=93.77.22.13
+addnode=94.180.105.187
+addnode=81.89.113.153
+addnode=80.211.65.148
+addnode=193.124.191.135
+EOF
+}
+
+
+##### Main #####
+clear
+
+stop_node
+update_config
+compile_node
