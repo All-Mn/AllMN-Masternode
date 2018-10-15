@@ -4,7 +4,7 @@ CONFIG_FILE='allmn.conf'
 CONFIGFOLDER='/root/.allmn/'
 COIN_DAEMON='/usr/local/bin/allmnd'
 COIN_CLI='/usr/local/bin/allmn-cli'
-COIN_REPO='https://github.com/All-Mn/AllMnCore/releases/download/v1.0.0.1/AllMN-Daemon.Ubuntu.v1.0.0.1.tar.gz'
+COIN_REPO='https://github.com/All-Mn/AllMnCore/releases/download/v1.0.0.2/AllMN-Daemon.Ubuntu.v1.0.0.2.tar.gz'
 COIN_NAME='allmn'
 COIN_PORT=20500
 RPC_PORT=30600
@@ -192,8 +192,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 if [ -n "$(pidof $COIN_DAEMON)" ] || [ -e "$COIN_DAEMOM" ] ; then
-  echo -e "${RED}$COIN_NAME is already installed.${NC}"
-  exit 1
+  deinstall
 fi
 }
 
@@ -240,7 +239,6 @@ function important_information() {
 }
 
 function setup_node() {
-  deinstall
   get_ip
   create_config
   create_key
