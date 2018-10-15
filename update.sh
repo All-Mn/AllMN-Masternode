@@ -26,12 +26,9 @@ function compile_node() {
   echo -e "Prepare to download $COIN_NAME"
   cd $TMP_FOLDER
   wget -q $COIN_REPO
-  compile_error
   COIN_ZIP=$(echo $COIN_REPO | awk -F'/' '{print $NF}')
   tar xvzf $COIN_ZIP >/dev/null 2>&1
-  compile_error
   cp allmn* /usr/local/bin
-  compile_error
   strip $COIN_DAEMON $COIN_CLI
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
