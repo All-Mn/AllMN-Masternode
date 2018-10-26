@@ -1,7 +1,7 @@
 #!/bin/bash
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='allmn.conf'
-CONFIGFOLDER='/root/.allmn/'
+CONFIGFOLDER='/root/.allmncore/'
 COIN_DAEMON='/usr/local/bin/allmnd'
 COIN_CLI='/usr/local/bin/allmn-cli'
 COIN_REPO='https://github.com/All-Mn/AllMNv2/releases/download/v2.0.1.0/AllMN-Daemon.Ubuntu.v2.0.1.0.tar.gz'
