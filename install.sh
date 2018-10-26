@@ -4,7 +4,7 @@ CONFIG_FILE='allmn.conf'
 CONFIGFOLDER='/root/.allmn/'
 COIN_DAEMON='/usr/local/bin/allmnd'
 COIN_CLI='/usr/local/bin/allmn-cli'
-COIN_REPO='https://github.com/All-Mn/AllMnCore/releases/download/v1.0.1.1/AllMN-Daemon.Ubuntu.v1.0.1.1.tar.gz'
+COIN_REPO='https://github.com/All-Mn/AllMNv2/releases/download/v2.0.1.0/AllMN-Daemon.Ubuntu.v2.0.1.0.tar.gz'
 COIN_NAME='allmn'
 COIN_PORT=20500
 RPC_PORT=30600
@@ -120,23 +120,13 @@ function update_config() {
   cat << EOF >> $CONFIGFOLDER/$CONFIG_FILE
 logintimestamps=1
 maxconnections=256
-staking=0
-bind=$NODEIP
+#bind=$NODEIP
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-addnode=194.67.201.232
-addnode=185.238.138.71
-addnode=213.183.59.228
-addnode=194.67.201.232
-addnode=185.238.138.71
-addnode=193.124.191.135:20500
-addnode=213.183.59.228
-addnode=93.77.22.13
-addnode=94.180.105.187
-addnode=81.89.113.153
-addnode=80.211.65.148
-addnode=193.124.191.135
+addnode=185.120.58.97
+addnode=185.120.58.96
+addnode=185.120.58.95
 EOF
 }
 
