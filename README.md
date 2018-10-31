@@ -13,7 +13,7 @@ bash install.sh
 After the MN is up and running, you need to configure the desktop wallet accordingly. Here are the steps:  
 1. Open the AllMN Desktop Wallet.  
 2. Go to RECEIVE and create a New Address: **MN1**  
-3. Send **1000** ALMN to **MN1**. You need to send all 1000 coins in one single transaction.
+3. Send **2000** ALMN to **MN1**. You need to send all 2000 coins in one single transaction.
 4. Wait for 15 confirmations.  
 5. Go to **Help -> "Debug Window - Console"**  
 6. Type the following command: **masternode outputs**
