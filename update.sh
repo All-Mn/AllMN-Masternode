@@ -37,28 +37,8 @@ function compile_node() {
 }
 
 
-function update_config() {
-  sed -i 's/daemon=1/daemon=0/' $CONFIGFOLDER/$CONFIG_FILE
-  cat << EOF >> $CONFIGFOLDER/$CONFIG_FILE
-addnode=194.67.201.232
-addnode=185.238.138.71
-addnode=213.183.59.228
-addnode=194.67.201.232
-addnode=185.238.138.71
-addnode=193.124.191.135:20500
-addnode=213.183.59.228
-addnode=93.77.22.13
-addnode=94.180.105.187
-addnode=81.89.113.153
-addnode=80.211.65.148
-addnode=193.124.191.135
-EOF
-}
-
-
 ##### Main #####
 clear
 
 stop_node
-update_config
 compile_node
