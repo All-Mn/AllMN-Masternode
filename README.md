@@ -8,6 +8,13 @@ bash install.sh
 ```
 ***
 
+## Update
+```
+wget -q https://raw.githubusercontent.com/All-Mn/AllMN-Masternode/master/update.sh
+bash update.sh
+```
+***
+
 ## Desktop wallet setup
 
 After the MN is up and running, you need to configure the desktop wallet accordingly. Here are the steps:  
